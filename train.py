@@ -53,7 +53,7 @@ Con.plot()
 
 plt.savefig("Results/img.png",dpi=120)
 
-with open("Results/metrics.txt","wb") as f:
+with open("Results/metrics.txt","w") as f:
     f.write(f"Accuracy: {accuracy*100}% | F1: {f1*100}")
 
 sio.dump(pipe,"Model/git.skops")
