@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 import skops.io as sio
 
-df=pd.read_csv(r"env\Data\drug.csv")
+df=pd.read_csv(r"Data/drug.csv")
 df=df.sample(frac=1)
 df.head()
 
@@ -51,6 +51,9 @@ Con=ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=
                            pipe.classes_)
 Con.plot()
 
-plt.savefig(r"env\Results\model_res.png",dpi=120)
+plt.savefig("Results/img.png",dpi=120)
 
-sio.dump(pipe,r"env\Model\drug_pipe.skops")
+with open("Results/metrics.txt","wb") as f:
+    f.write(f"Accuracy: {accuracy*100}% | F1: {f1*100}")
+
+sio.dump(pipe,"Model/git.skops")
